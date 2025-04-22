@@ -70,10 +70,11 @@ public class EnemyWalker : MonoBehaviour
     // so they just detect things inside of them)
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // if the colliding object has the Player tag...
+        // if the player is the object in the trigger
         if(collision.gameObject.CompareTag("Player"))
         {
-            // we need to damage the player!
+            // get the player's script, and call TakeDamage with a damageVal of 1
+            collision.gameObject.GetComponent<PlayerMove>().TakeDamage(1);
         }
     }
 }

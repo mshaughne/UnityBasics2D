@@ -23,7 +23,15 @@ public class PlayerMove : MonoBehaviour
     /// <summary>
     /// how much health does the player have? i.e. how many hits can I take?
     /// </summary>
-    int health = 3;
+    public int health = 3;
+    /// <summary>
+    /// how often can they be damaged / how long are they invincible after a hit?
+    /// </summary>
+    public float damageCooldown = 1.5f;
+    /// <summary>
+    /// how long has it been since the last damage event?
+    /// </summary>
+    private float lastDamageTime = -Mathf.Infinity;
 
     private void Start()
     {
@@ -80,8 +88,25 @@ public class PlayerMove : MonoBehaviour
     // a function for the player to be able to
     // take damage when the enemy touches them!
     // remember, we added the public int Health at the top.
-    public void TakeDamage(int damageValue)
+    public void TakeDamage(int damageVal)
     {
+        if(Time.time - damageCooldown >= lastDamageTime)
+        {
+            lastDamageTime = Time.time;
 
+            health -= damageVal;
+            Debug.Log("Health = " + health);
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                Debug.Log("You died!");
+            }
+        }
+    }
+
+    public void Bounce()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 5f);
     }
 }
