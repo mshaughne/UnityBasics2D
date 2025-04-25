@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -32,6 +34,10 @@ public class PlayerMove : MonoBehaviour
     /// how long has it been since the last damage event?
     /// </summary>
     private float lastDamageTime = -Mathf.Infinity;
+    /// <summary>
+    /// the UI asset that holds our health text
+    /// </summary>
+    public TextMeshProUGUI healthText;
 
     private void Start()
     {
@@ -44,6 +50,9 @@ public class PlayerMove : MonoBehaviour
             // we should pop an error!
             Debug.LogError("Player RB not found");
         }
+
+        // update our health UI
+        healthText.text = "Health = " + health;
     }
 
     // this is called once every 0.02 seconds, or 50 times per second. we generally want to use FixedUpdate for physics-based interactions.
@@ -95,11 +104,15 @@ public class PlayerMove : MonoBehaviour
             lastDamageTime = Time.time;
 
             health -= damageVal;
+            // update the health UI
+            healthText.text = "Health = " + health;
+
             Debug.Log("Health = " + health);
 
             if (health <= 0)
             {
-                Destroy(gameObject);
+                SceneManager.LoadScene("GameOver");
+                // Destroy(gameObject);
                 Debug.Log("You died!");
             }
         }
