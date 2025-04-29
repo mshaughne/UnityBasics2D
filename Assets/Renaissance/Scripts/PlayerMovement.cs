@@ -127,4 +127,9 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }*/
     }
+
+    public void Bounce()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 5f);
+    }
 }

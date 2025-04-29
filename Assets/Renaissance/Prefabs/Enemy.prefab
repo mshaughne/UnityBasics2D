@@ -345,3 +345,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45ce3f843a89d409a8678eea80290a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticle: {fileID: 6696904440416366566, guid: 5ff040c3c662a4e4386e4fe11bde6aa5, type: 3}
