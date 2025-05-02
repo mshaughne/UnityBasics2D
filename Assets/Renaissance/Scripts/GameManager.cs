@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     public int coinsObtained = 0;
 
+    public TextMeshProUGUI coinsText;
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +57,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        coinsText.text = "Coins = " + coinsObtained;
     }
 
     void Update()
@@ -70,6 +77,7 @@ public class GameManager : MonoBehaviour
     public void ObtainCoin()
     {
         coinsObtained++;
+        coinsText.text = "Coins = " + coinsObtained;
         Debug.Log("Coins = " + coinsObtained);
     }
 
