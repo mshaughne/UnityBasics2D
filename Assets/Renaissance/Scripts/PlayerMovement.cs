@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per 0.02 seconds (50x per second)
     void FixedUpdate()
     {
+        if(GameManager.Instance.isPaused)
+        {
+            return;
+        }
+
         // moving left and right by getting the Horizontal movement axis
         float moveInput = Input.GetAxis("Horizontal");
         // we are directly relating our horizontal velocity of our rigidbody by setting rb.velocity.x to "moveInput * speed"!
@@ -58,11 +63,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             speed = 5;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
         }
     }
 
