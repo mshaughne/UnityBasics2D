@@ -58,6 +58,12 @@ public class PlayerMove : MonoBehaviour
     // this is called once every 0.02 seconds, or 50 times per second. we generally want to use FixedUpdate for physics-based interactions.
     private void FixedUpdate()
     {
+        // if the game is paused, do not accept inputs.
+        if(GameManagerSF.Instance.isPaused)
+        {
+            return;
+        }
+
         // moving left and right by getting the Horizontal movement axis from the player's controls
         float moveInput = Input.GetAxis("Horizontal");
         // we are directly modifying the horizontal velocity of our rigidbody by setting rb.velocity.x to "moveInput * speed"!
