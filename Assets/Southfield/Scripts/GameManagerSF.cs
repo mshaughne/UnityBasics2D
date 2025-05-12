@@ -18,6 +18,12 @@ public class GameManagerSF : MonoBehaviour
     /// textmeshpro component for the coin count
     /// </summary>
     public TextMeshProUGUI coinsText;
+    /// <summary>
+    /// the game object that holds the panel and buttons for the pause menu
+    /// </summary>
+    public GameObject pauseMenuUI;
+
+    public bool isPaused = false;
 
     private void Awake()
     {
@@ -41,8 +47,14 @@ public class GameManagerSF : MonoBehaviour
         // if the player presses Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // switch to the main menu
-            SceneManager.LoadScene("MainMenuScene");
+            if(!isPaused)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -51,5 +63,19 @@ public class GameManagerSF : MonoBehaviour
         coinsObtained++;
         coinsText.text = "Coins = " + coinsObtained;
         Debug.Log("Coins = " + coinsObtained);
+    }
+
+    public void Resume()
+    {
+        isPaused = false;
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
