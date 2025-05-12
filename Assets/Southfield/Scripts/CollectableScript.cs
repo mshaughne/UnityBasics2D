@@ -12,7 +12,7 @@ public class CollectableScript : MonoBehaviour
         // check if the object has the Player tag
         if(collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.ObtainCoin();
+            GameManagerSF.Instance.ObtainCoin();
             // get the coin
             Debug.Log("You got a coin!");
             AudioSource.PlayClipAtPoint(coinSound, transform.position);
