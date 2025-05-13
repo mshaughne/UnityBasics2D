@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticle: {fileID: 8147680842928974705, guid: a0fd68e8ee86f1649b9f635c1a25fb74, type: 3}
+  deathSound: {fileID: 8300000, guid: dba3e6a0dbea06f40a498b94dfea180d, type: 3}
 --- !u!1 &6162627973043087992
 GameObject:
   m_ObjectHideFlags: 0
