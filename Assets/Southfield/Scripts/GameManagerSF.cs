@@ -25,6 +25,8 @@ public class GameManagerSF : MonoBehaviour
 
     public bool isPaused = false;
 
+    public ParticleSystem victoryParticle1;
+
     private void Awake()
     {
         if (Instance == null)
@@ -49,11 +51,11 @@ public class GameManagerSF : MonoBehaviour
         {
             if(!isPaused)
             {
-
+                Pause();
             }
             else
             {
-
+                Resume();
             }
         }
     }
@@ -69,6 +71,7 @@ public class GameManagerSF : MonoBehaviour
     {
         isPaused = false;
         pauseMenuUI.SetActive(false);
+        ResumeAudio();
         Time.timeScale = 1f;
     }
 
@@ -76,6 +79,36 @@ public class GameManagerSF : MonoBehaviour
     {
         isPaused = true;
         pauseMenuUI.SetActive(true);
+        PauseAudio();
         Time.timeScale = 0f;
+    }
+
+    public void BackToMenuButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SouthfieldMenuScene");
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void PauseAudio()
+    {
+        // this will pause ALL audio by pausing the listener
+        //AudioListener.pause = true;
+
+        // covering this on friday!
+        // this will allow us to only pause specific audio sources
+        /*foreach(AudioSource audio in FindObjectsOfType<AudioSource>())
+        {
+
+        }*/
+    }
+
+    public void ResumeAudio()
+    {
+        //AudioListener.pause = false;
     }
 }

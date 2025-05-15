@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Renaissance/Scenes/MainMenuScene.unity
-    guid: 554d9e3c900e7a24d87fc6c52716862c
+    path: Assets/Southfield/Scenes/SouthfieldMenuScene.unity
+    guid: 8613d72140f594741ab48d79f937e0ff
   - enabled: 1
-    path: Assets/Renaissance/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Southfield/Scenes/SouthfieldScene.unity
+    guid: 2fbddef232146234a97766fab1fb2f31
   - enabled: 1
-    path: Assets/Renaissance/Scenes/GameOverScene.unity
-    guid: 82fbe1172399c894c8224d962a7b4d69
+    path: Assets/Southfield/Scenes/GameOver.unity
+    guid: f97373a8efc9e3c47acb2f54396a23f0
   m_configObjects: {}

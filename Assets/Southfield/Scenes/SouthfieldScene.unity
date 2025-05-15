@@ -1653,8 +1653,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsObtained: 0
   coinsText: {fileID: 1571471033}
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1713263736}
   isPaused: 0
+  victoryParticle1: {fileID: 0}
 --- !u!1 &754367827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1896,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 925036164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 748803338}
+        m_TargetAssemblyTypeName: GameManagerSF, Assembly-CSharp
+        m_MethodName: BackToMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &925036164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2638,7 +2651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1310093686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 748803338}
+        m_TargetAssemblyTypeName: GameManagerSF, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1310093686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3271,7 +3296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1713263737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3498,7 +3523,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772536628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 748803338}
+        m_TargetAssemblyTypeName: GameManagerSF, Assembly-CSharp
+        m_MethodName: QuitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1772536628
 MonoBehaviour:
   m_ObjectHideFlags: 0
