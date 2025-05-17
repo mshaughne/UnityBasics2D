@@ -22,10 +22,14 @@ public class GameManagerSF : MonoBehaviour
     /// the game object that holds the panel and buttons for the pause menu
     /// </summary>
     public GameObject pauseMenuUI;
-
+    /// <summary>
+    /// is the game paused?
+    /// </summary>
     public bool isPaused = false;
 
-    public ParticleSystem victoryParticle1;
+    private List<AudioSource> audioSources = new List<AudioSource>();
+
+    public List<AudioSource> excludedAudioSources = new List<AudioSource>();
 
     private void Awake()
     {
@@ -49,7 +53,7 @@ public class GameManagerSF : MonoBehaviour
         // if the player presses Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!isPaused)
+            if (!isPaused)
             {
                 Pause();
             }
@@ -88,7 +92,6 @@ public class GameManagerSF : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("SouthfieldMenuScene");
     }
-
     public void QuitButton()
     {
         Application.Quit();
@@ -96,19 +99,63 @@ public class GameManagerSF : MonoBehaviour
 
     public void PauseAudio()
     {
-        // this will pause ALL audio by pausing the listener
+        // this will pause ALL audio by pausing the listener itself!
         //AudioListener.pause = true;
 
-        // covering this on friday!
-        // this will allow us to only pause specific audio sources
-        /*foreach(AudioSource audio in FindObjectsOfType<AudioSource>())
+        // this will allow us to only pause specific audio sources!
+        // (or more accurately, only leave specific sources UNpaused.)
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
         {
+            // if the audio source is already playing && it isn't on the excluded list
+            if (audio.isPlaying && !excludedAudioSources.Contains(audio))
+            {
+                audio.Pause();
+                // adds the audio source to a list of things to unpause later!
+                audioSources.Add(audio);
+            }
+        }
 
-        }*/
+        // a way to pause all ALREADY ACTIVE audio sources (not new ones!)
+        /*
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+        {
+            // if the audio source is already playing && it isn't on the excluded list
+            if (audio.isPlaying)
+            {
+                audio.Pause();
+            }
+        }
+        */
     }
 
     public void ResumeAudio()
     {
         //AudioListener.pause = false;
+
+        // a way to re-enable all of the sources in the list we made earlier,
+        // as well as clean up that list!
+        // note: we can't use foreach here because deleting things from
+        // an active foreach loop causes it to error out!
+        for(int i = audioSources.Count - 1; i>=0; i--)
+        {
+            if (audioSources[i])
+            {
+                audioSources[i].UnPause();
+                audioSources.RemoveAt(i);
+            }
+        }
+
+
+        // a slightly simple way to reenable all audio sources!
+        /*
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+        {
+            if (audio)
+            {
+                audio.UnPause();
+            }
+        }
+        */
+        
     }
 }

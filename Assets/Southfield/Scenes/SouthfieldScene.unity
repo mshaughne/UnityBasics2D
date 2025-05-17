@@ -1655,7 +1655,7 @@ MonoBehaviour:
   coinsText: {fileID: 1571471033}
   pauseMenuUI: {fileID: 1713263736}
   isPaused: 0
-  victoryParticle1: {fileID: 0}
+  excludedAudioSources: []
 --- !u!1 &754367827
 GameObject:
   m_ObjectHideFlags: 0
